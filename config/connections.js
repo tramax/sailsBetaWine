@@ -55,7 +55,7 @@ module.exports.connections = {
     // user      : '',
     // password  : '',
     // database  : 'sailsWine'
-    url: "mongodb://nlt:532058@oceanic.mongohq.com:10010/sailsWine"//process.env.DB_URL
+    url: process.env.DB_URL
   },
   // PostgreSQL is another officially supported relational database. 
   // http://en.wikipedia.org/wiki/PostgreSQL
