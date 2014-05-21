@@ -1,0 +1,147 @@
+<div class="large-9 columns" role="content">
+  <h4>Create a new Wine bottle</h4>
+  <form id="form-wine-new" action="/wine" method="POST" >
+
+    <div class="row text-editor">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Description (EN):</label>
+          </div>
+          <div class="large-11 columns">
+            <textarea id="textarea-description-en" class="description" type="text" name="description-en"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seperate"></div>
+
+    <div class="row text-editor">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Description (VN):</label>
+          </div>
+          <div class="large-11 columns">
+            <textarea id="textarea-description-vn" class="description" type="text" name="description-vn"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seperate"></div>
+
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Name:</label>
+          </div>
+          <div class="large-11 columns">
+            <input type="text" id="right-label" name="label" placeholder="Name">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Alcohol:</label>
+          </div>
+          <div class="large-11 columns">
+            <input type="text" id="right-label" name="alcohol" placeholder="Alcohol">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row"> 
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Price:</label>
+          </div>
+          <div class="large-11 columns">
+            <input type="text" id="right-label" name="price" placeholder="Price">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Volume:</label>
+          </div>
+          <div class="large-11 columns">
+            <input type="text" id="right-label" name="volume" placeholder="Volume">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Category:</label>
+          </div>
+          <div class="large-11 columns">
+            <select name="category_id">
+              <% for(var i=0; i<categories.length; i++) { %>
+                <option value="<%= categories[i].id%>"><%= categories[i].name %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Images: </label>
+          </div>
+          <div class="large-11 columns">
+            <div id="multipleupload">
+              Upload
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns"></div>
+          <div class="large-11 columns">
+            <input type="submit" class="button" value="Submit"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input id="csrf" type="hidden" name="_csrf" value="<%= _csrf %>" />
+  </form>
+</div>
+
+<script type="text/javascript" src="/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+  tinyMCE.init({
+      mode : "specific_textareas",
+      editor_selector: "description",
+      plugins: [
+          "autolink lists link image charmap",
+          "searchreplace visualblocks code fullscreen",
+          "insertdatetime media table contextmenu paste"
+      ],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+  });
+}
+</script>

@@ -1,0 +1,169 @@
+@font-face {
+  font-family: 'SerlioLTStdRegular';
+  src: url('/fonts/serlio-lt-std_40079.eot');
+  src: url('/fonts/serlio-lt-std_40079.eot') format('embedded-opentype'),
+       url('/fonts/serlio-lt-std_40079.woff') format('woff'),
+       url('/fonts/serlio-lt-std_40079.ttf') format('truetype'),
+       url('/fonts/serlio-lt-std_40079.svg#SerlioLTStdRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CalligraffitiRegular';
+  src: url('/fonts/calligraffiti.eot');
+  src: url('/fonts/calligraffiti.eot') format('embedded-opentype'),
+       url('/fonts/calligraffiti.woff') format('woff'),
+       url('/fonts/calligraffiti.ttf') format('truetype'),
+       url('/fonts/calligraffiti.svg#CalligraffitiRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@text-yellow: #C6A65A;
+@text-yellow-hover: #AD904B;
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+.bg-white{
+	background: #ECECEC url("/images/bg_texture.png");
+}
+.layout-footer{
+	margin-top: 20px;
+	padding: 20px 20px 0;
+	border-top: 1px solid #ccc;
+}
+.footer-info{
+	width: 270px;
+	padding: 10px;
+	-webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+	transition: all 1s;
+}
+.layout-subnav{
+	margin-top: 20px;
+	padding-left: 15px;
+}
+/*------------------------------------*\
+    $WINE LIST
+\*------------------------------------*/
+.winelist-thumbnail{
+	max-width: 230px;
+	margin: 0 auto;
+	text-align: center;
+}
+.collection_line{
+	background: url(../../images/block_line.png) center no-repeat;
+	height: 2px;
+	background-size: contain;
+	margin: 13px;
+}
+.winelist-title{
+	font-style: italic;
+	text-transform: uppercase;
+	text-align: center;
+	width: 100%;
+	font-weight: 600;
+	a{
+		color: @text-yellow;
+		&:hover{
+			color: @text-yellow-hover;
+		}
+	}
+}
+.winelist-info{
+	font-size: 15px;
+	padding: 0 10px;
+	.info-line{
+		margin: 2px 0;
+	}
+	.title{
+		color: @text-yellow;
+		font-style: italic;
+		display: inline-block;
+	}
+	.info{
+		display: inline-block;
+	}
+}
+.winelist-img{
+	-webkit-transition: all 200ms;
+}
+/*------------------------------------*\
+    $WINE DETAILS
+\*------------------------------------*/
+.winedetails-label{
+	font-size: 25px;
+	color: #231F20;
+	margin-top: 150px;
+	font-size: 40px;
+	font-family: "SerlioLTStdRegular";
+}
+.winedetails-info{
+	margin-top: 40px;
+	font-size: 20px;
+	.info-line{
+		margin: 30px 0;
+	}
+	.title{
+		color: #B29B70;
+		display: inline-block;
+	}
+	.info{
+		color: #626161;
+		display: inline-block;
+	}
+}
+.winedetails-col-right{
+	padding: 0 60px;
+}
+.container-img-gallery{
+	width: 100%;
+	height: 200px;
+	text-align: center;
+	padding: 0 50px;
+}
+.winedetails-content{
+	padding: 55px 35px;
+}
+.description-title{
+	font-family: "CalligraffitiRegular";
+	font-size: 35px;
+	color: #947E37;
+	margin: 20px 0;
+}
+/*------------------------------------*\
+    $ADMIN
+\*------------------------------------*/
+.wrapper-btn-action{
+	padding: 15px 20px 0 20px;
+}
+/*------------------------------------*\
+    $LOGIN
+\*------------------------------------*/
+.form-login{
+	width: 500px;
+	margin: 50px auto 0;
+}
+/*------------------------------------*\
+    $HELPERS
+\*------------------------------------*/
+.greyscale{
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	-webkit-filter: grayscale(1);
+}
+.text-center{
+	text-align: center;
+}
+.img-height-responsive{
+	max-height: 100%;
+}
+.select-box{
+	box-shadow: 0 0 6px 1px rgba(0, 140, 186, 0.5);
+}
+.seperate{
+	width: 1px;
+	height: 20px;
+}

@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th width="300">Label</th>
+      <th width="100">Alcohol</th>
+      <th width="100">Volume</th>
+      <th width="100">Price</th>
+      <th width="180"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for( var i = 0; i<wine.length; i++){ %>
+      <tr>
+        <td><%= wine[i].label %></td>
+        <td><%= wine[i].alcohol %></td>
+        <td><%= wine[i].volume %></td>
+        <td><%= wine[i].price %></td>
+        <td class="wrapper-btn-action">
+          <a href="/admin/wine/<%= wine[i].id %>" class="tiny button success left">Edit</a>
+          <a href="#" class="tiny button alert right">Delete</a>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%- title %></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/foundation.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/uploadfile.css">
+    <!--STYLES END-->
+  </head>
+
+    <!-- Navigation -->
+      <nav class="top-bar top-bar-public" data-topbar>
+        <section class="top-bar-section">
+          <ul class="title-area">
+            <li class="name">
+              <h1>
+                <a href="/logout">
+                  Logout
+                </a>
+              </h1>
+            </li>>
+          </ul>
+          <ul class="right">
+            <li>
+              <a href="/">
+                <img src="/images/logo_glass.png" width="30px"></img>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    <!-- End Navigation -->
+ 
+ 	
+  <!-- Main Page Content and Sidebar -->
+
+    <!-- Sidebar -->
+ 
+    <aside class="large-3 columns">
+      <ul class="side-nav">
+        <li><a href="/admin/wine">Wine List</a></li>
+        <li><a href="/admin/wine/new">Add Wine</a></li>
+      </ul>
+ 
+    </aside>
+    <!-- End Sidebar -->
+
+    <!-- Main content -->
+    <div class="row">
+      <%- body %>
+    </div>
+    <!-- End main content -->
+    
+  <!-- End Main Content and Sidebar -->
+  
+    <%- partial('partials/footer') %>
+ 
+  <!-- Footer -->
+ 
+    
+    
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/fastclick.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script src="/js/foundation/foundation.clearing.js"></script>
+    <script src="/js/foundation/foundation.topbar.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/jquery.uploadfile.min.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/pages.js"></script>
+    <script src="/js/placeholder.js"></script>
+    <!--SCRIPTS END-->
+
+    <!-- Make sure to remove this in production -->
+    <script>
+      $(document).foundation();
+    </script>
+
+  </body>
+</html>

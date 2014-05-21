@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="medium-5 columns text-center">
+  	<img src="/uploads/<%= wine.images[0]%>-origin.png" />
+  </div>
+  <div class="medium-7 columns winedetails-col-right">
+  	<div class="winedetails-label">
+  		<%= wine.label %>
+  	</div>
+  	<div class="winedetails-info">
+
+			<div class="info-line">
+	  		<div class="title">
+	  			<%= __("Alcohol") %>:
+	  		</div>
+	  		<div class="info">
+	  			<%= wine.alcohol %>%
+	  		</div>
+	  	</div>
+  		<div class="info-line">
+	  		<div class="title">
+	  			<%= __("Volume") %>:
+	  		</div>
+	  		<div class="info">
+	  			<%= wine.volume %>ml
+	  		</div>
+	  	</div>
+  		<div class="info-line">
+	  		<div class="title">
+	  			<%= __("Price") %>:
+	  		</div>
+	  		<div class="info">
+	  			<%= wine.price %>&nbsp;<%= __('Currency') %>
+	  		</div>
+	  	</div>
+
+	  	<a href="javascript: showPhoneNumber();" class="button alert"><%= __("Buy") %></a>
+	  </div>
+  </div>
+</div>
+
+<div class="collection_line"></div>
+<div class="row">
+	<div class="container-img-gallery">
+		<ul class="clearing-thumbs" data-clearing>
+			<% for(var i=0; i < wine.images.length; i++) {%>
+				<li>
+						<a href="/uploads/<%= wine.images[i] %>-origin.png" class="th">
+							<img src="/uploads/<%= wine.images[i]%>-thumbnail.png" class="img-height-responsive"/>
+						</a>
+				</li>
+			<% } %>
+		</ul>
+	</dv>
+</div>
+<div class="collection_line"></div>
+
+<div class="row">
+	<div class="winedetails-content">
+		<div class="description-title">
+			<%= __("Description") %>
+		</div>
+		<%- wineDescription %>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<% if(flash && flash.err) { %>
+  <div class="login-error form-login">
+    <% Object.keys(flash.err).forEach(function(error) { %>
+      <span class="label alert"><%= flash.err[error] %></span>
+    <% }) %>
+  </div>
+<% } %>
+<div class="form-login">
+  <form action="/session/create" method="POST">
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Username: 
+          <input type="text" name="username" placeholder="Username" />
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Password: 
+          <input type="password" name="password" placeholder="Password" />
+        </label>
+      </div>
+    </div>
+    <input type="submit" class="button" value="Login"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  </form>
+</div>

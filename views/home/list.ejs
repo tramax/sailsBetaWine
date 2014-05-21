@@ -1,0 +1,48 @@
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+	<% for(var i=0; i < wine.length; i++) {%>
+	  <li>
+	  	<div class="winelist-thumbnail">
+	  		<a href="/wine/<%= wine[i].label %>">
+	  			<img class="winelist-img wine-no-hover" src="/uploads/<%= wine[i].images[0]%>-thumbnail.png"/>
+	  		</a>
+	  	</div>
+	  	<div class="collection_line"></div>
+	  	<div class="winelist-title">
+	  		<a href="/wine/<%= wine[i].label %>">
+	  			<%= wine[i].label %>
+	  		</a>
+	  	</div>
+
+	  	<div class="winelist-info">
+
+	  		<div class="info-line">
+		  		<div class="title">
+		  			<%= __("Alcohol") %>:
+		  		</div>
+		  		<div class="info">
+		  			<%= wine[i].alcohol %>%
+		  		</div>
+		  	</div>
+	  		<div class="info-line">
+		  		<div class="title">
+		  			<%= __("Volume") %>:
+		  		</div>
+		  		<div class="info">
+		  			<%= wine[i].volume %>ml
+		  		</div>
+		  	</div>
+	  		<div class="info-line">
+		  		<div class="title">
+		  			<%= __("Price") %>:
+		  		</div>
+		  		<div class="info">
+		  			<%= wine[i].price %>&nbsp;<%= __('Currency') %>
+		  		</div>
+		  	</div>
+
+	  	</div>
+
+	  </li>
+  <% } %>
+</ul>
+
