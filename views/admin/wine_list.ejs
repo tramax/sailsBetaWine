@@ -14,7 +14,7 @@
         <td><%= wine[i].label %></td>
         <td><%= wine[i].alcohol %></td>
         <td><%= wine[i].volume %></td>
-        <td><%= wine[i].price %></td>
+        <td><%= wine[i]["price_"+locale].toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></td>
         <td class="wrapper-btn-action">
           <a href="/admin/wine/<%= wine[i].id %>" class="tiny button success left">Edit</a>
           <a href="#" class="tiny button alert right">Delete</a>

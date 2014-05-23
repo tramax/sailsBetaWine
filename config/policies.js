@@ -16,11 +16,17 @@ module.exports.policies = {
 
   // Default policy for all controllers and actions
   // (`true` allows public access) 
+  user: {
+  	'*': [ passport.initialize(), passport.session(), 'admin']
+  },
   admin: {
   	'*': [ passport.initialize(), passport.session(), 'admin']
   },
   category: {
   	'*': [ 'category', 'language' ]
+  },
+  brand: {
+  	'*': [ passport.initialize(), passport.session(), 'admin' ]
   },
   wine: {
   	'*': [ passport.initialize(), passport.session(), 'admin' ],

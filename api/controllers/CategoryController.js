@@ -16,11 +16,11 @@ module.exports = {
 
     Category.create(categoryObj, function(err, category){
     	if (err) {
-    		return res.redirect('category/new');
+    		return res.redirect('admin/category/new');
     	}
-    	category.save(function(err,wine){
+    	category.save(function(err,category){
     		if(err) return next(err);
-    		return res.redirect('category/new');
+    		return res.redirect('admin/category/new');
     	});
     });
 	},
@@ -28,10 +28,8 @@ module.exports = {
   listAll: function(req, res, next){
 
     Wine.find().sort('createdAt desc').exec( function(err, wine){
-      if(err) {
-        return next(err);
-      }
-      res.view('home/list', { wine: wine, currCategory: null, currClass: "current" });
+      if(err) return next(err);
+      res.view('home/list', { wine: wine, currCategory: null, currClass: "current", locale: res.locals.getLocale() });
     })
   },
   listFollowCategory: function(req, res, next){
@@ -42,7 +40,9 @@ module.exports = {
       });
       return [category, listWine];
     }).spread( function(category, listWine) {
-      res.view('home/list', { wine: listWine, currClass: "current", currCategory: category });
+      var price = wine[ 'price_'+res.locals.getLocale() ];
+
+      res.view('home/list', { wine: listWine, currClass: "current", currCategory: category, price: price });
     }).fail( function (err) {
       next(err);
     });

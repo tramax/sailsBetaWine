@@ -25,15 +25,7 @@ module.exports = {
       res.view('admin/wine_list', { layout: 'layout_admin', wine: wine});
     });
   },
-  wine_details: function(req, res, next) {
-    Wine.findOne( req.param('wineId'), function(err, wine){
-      if (err){ return next(err)};
-      Category.find( function(err, category) {
-        if (err){ return next(err)};
-        res.view( 'admin/wine_details', {layout: 'layout_admin', wine: wine, category: category} );
-      });
-    });
-  },
+
   _config: {
   	blueprints: {
   		actions: false,

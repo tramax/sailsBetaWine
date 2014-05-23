@@ -1,6 +1,7 @@
 <div class="large-9 columns" role="content">
   <h4><%= wine.label%></h4>
-  <form id="form-wine-new" action="/wine" method="POST" >
+
+  <form id="form-wine-new" action="/wine/update/<%= wine.id %>" method="POST" >
 
     <div class="row text-editor">
       <div class="large-12">
@@ -39,7 +40,7 @@
             <label for="right-label-inline" class="right inline">Name:</label>
           </div>
           <div class="large-11 columns">
-            <input type="text" id="right-label" name="label" placeholder="Name">
+            <input type="text" id="right-label" name="label" placeholder="Name" value="<%= wine.label %>">
           </div>
         </div>
       </div>
@@ -52,7 +53,7 @@
             <label for="right-label-inline" class="right inline">Alcohol:</label>
           </div>
           <div class="large-11 columns">
-            <input type="text" id="right-label" name="alcohol" placeholder="Alcohol">
+            <input type="text" id="right-label" name="alcohol" placeholder="Alcohol" value="<%= wine.alcohol %>">
           </div>
         </div>
       </div>
@@ -62,10 +63,23 @@
       <div class="large-12">
         <div class="row">
           <div class="large-1 columns">
-            <label for="right-label-inline" class="right inline">Price:</label>
+            <label for="right-label-inline" class="right inline">Price (USD):</label>
           </div>
           <div class="large-11 columns">
-            <input type="text" id="right-label" name="price" placeholder="Price">
+            <input type="text" id="right-label" name="price_en" placeholder="Price" value="<%= wine.price_en %>">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row"> 
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Price (VND):</label>
+          </div>
+          <div class="large-11 columns">
+            <input type="text" id="right-label" name="price_vn" placeholder="VND" value="<%= wine.price_vn %>">
           </div>
         </div>
       </div>
@@ -78,39 +92,41 @@
             <label for="right-label-inline" class="right inline">Volume:</label>
           </div>
           <div class="large-11 columns">
-            <input type="text" id="right-label" name="volume" placeholder="Volume">
+            <input type="text" id="right-label" name="volume" placeholder="Volume" value="<%= wine.volume %>">
           </div>
         </div>
       </div>
     </div>
 
-	    <div class="row">
-	      <div class="large-12">
-	        <div class="row">
-	          <div class="large-1 columns">
-	            <label for="right-label-inline" class="right inline">Category:</label>
-	          </div>
-	          <div class="large-11 columns">
-	            <select name="category_id">
-	              <% for(var i=0; i<category.length; i++) { %>
-	                <option value="<%= category[i].id%>"><%= category[i].name %></option>
-	              <% } %>
-	            </select>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Category:</label>
+          </div>
+          <div class="large-11 columns">
+            <select name="category_id">
+              <% for(var i=0; i<categories.length; i++) { %>
+                <option value="<%= categories[i].id%>" <% if (categories[i].id == wine.categories[0]) {%> selected <%}%> ><%= categories[i].name %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="large-12">
         <div class="row">
           <div class="large-1 columns">
-            <label for="right-label-inline" class="right inline">Images: </label>
+            <label for="right-label-inline" class="right inline">Brand:</label>
           </div>
           <div class="large-11 columns">
-            <div id="multipleupload">
-              Upload
-            </div>
+            <select name="brand_id">
+              <% for(var i=0; i<brands.length; i++) { %>
+                <option value="<%= brands[i].id%>" <% if (categories[i].id == wine.categories[0]) { %> selected <% } %> > <%= brands[i].name %></option>
+              <% } %>
+            </select>
           </div>
         </div>
       </div>

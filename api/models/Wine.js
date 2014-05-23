@@ -21,10 +21,14 @@ module.exports = {
   		type: 'STRING',
   		required: false
   	},
-  	price: {
+  	price_usd: {
   		type: 'FLOAT',
   		required: false
   	},
+    price_vnd: {
+      type: 'FLOAT',
+      required: false
+    },
     description_en: {
       type: 'TEXT',
       required: false
@@ -38,6 +42,10 @@ module.exports = {
       required: false
     },
     categories: {
+      type: 'ARRAY',
+      required: true
+    },
+    brands: {
       type: 'ARRAY',
       required: true
     }

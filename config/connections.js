@@ -50,13 +50,14 @@ module.exports.connections = {
   //
   mongodb: {
     adapter   : 'sails-mongo',
-    // host      : 'localhost',
-    // port      : 27017,
-    // user      : '',
-    // password  : '',
-    // database  : 'sailsWine'
-    url: process.env.DB_URL
+    host      : 'localhost',
+    port      : 27017,
+    user      : '',
+    password  : '',
+    database  : 'sailsWine'
+    //url: process.env.DB_URL
   },
+
   // PostgreSQL is another officially supported relational database. 
   // http://en.wikipedia.org/wiki/PostgreSQL
   //

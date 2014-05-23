@@ -35,8 +35,10 @@ module.exports.routes = {
   },
   'GET /admin/wine': 'admin.wineList',
   'GET /admin/wine/new': 'wine.new',
-  'GET /admin/wine/:wineId' : 'admin.wine_details',
+  'GET /admin/wine/:id' : 'wine.edit',
   'GET /admin/category/new': 'category.new',
+
+  'GET /admin/brand/new': 'brand.new',
 
   'GET /login': 'session.login',
   'GET /logout': 'session.logout',

@@ -62,10 +62,23 @@
       <div class="large-12">
         <div class="row">
           <div class="large-1 columns">
-            <label for="right-label-inline" class="right inline">Price:</label>
+            <label for="right-label-inline" class="right inline">Price (USD):</label>
           </div>
           <div class="large-11 columns">
-            <input type="text" id="right-label" name="price" placeholder="Price">
+            <input type="text" id="right-label" name="price_en" placeholder="USD">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row"> 
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Price (VND):</label>
+          </div>
+          <div class="large-11 columns">
+            <input type="text" id="right-label" name="price_vn" placeholder="VND">
           </div>
         </div>
       </div>
@@ -94,6 +107,23 @@
             <select name="category_id">
               <% for(var i=0; i<categories.length; i++) { %>
                 <option value="<%= categories[i].id%>"><%= categories[i].name %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12">
+        <div class="row">
+          <div class="large-1 columns">
+            <label for="right-label-inline" class="right inline">Brand:</label>
+          </div>
+          <div class="large-11 columns">
+            <select name="brand_id">
+              <% for(var i=0; i<brands.length; i++) { %>
+                <option value="<%= brands[i].id%>"><%= brands[i].name %></option>
               <% } %>
             </select>
           </div>

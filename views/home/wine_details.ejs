@@ -29,7 +29,7 @@
 	  			<%= __("Price") %>:
 	  		</div>
 	  		<div class="info">
-	  			<%= wine.price %>&nbsp;<%= __('Currency') %>
+	  			<%= price.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>&nbsp;<%= __('Currency') %>
 	  		</div>
 	  	</div>
 

@@ -45,7 +45,10 @@ module.exports = {
 		var categories;
 		Category.find(function(err, categories){
 			if (err) next(err);
-			res.view('admin/wine_new', {categories: categories, layout: 'layout_admin' });
+      Brand.find(function(err, brands) {
+          if(err) next(err);
+          res.view('admin/wine_new', {categories: categories, brands: brands, layout: 'layout_admin' });
+      })
 		});
 	},
 	create: function(req, res, next){
@@ -53,11 +56,13 @@ module.exports = {
 		var wineObj = {
       label: req.param('label'),
       alcohol: req.param('alcohol'),
-      price: req.param('price'),
+      price_en: req.param('price_en'),
+      price_vn: req.param('price_vn'),
       volume: req.param('volume'),
       description_en: req.param('description-en'),
       description_vn: req.param('description-vn'),
       categories: [req.param('category_id')],
+      brands: [req.param('brand_id')],
       images: imgArr
     };
     var category_id = req.param('category_id');
@@ -75,6 +80,52 @@ module.exports = {
     })
 	},
   
+  edit: function(req,res,next) {
+    Wine.findOne(req.param('id')).then( function(wine) {
+      var categories = Category.find().then( function(categories) {
+        return categories;
+      });
+      var brands = Brand.find().then( function(brands) {
+        return brands;
+      });
+
+      return [ wine, categories, brands ];
+    }).spread(function( wine, categories, brands ) {
+        res.view(
+          'admin/wine_edit',
+          {
+            categories: categories,
+            brands: brands,
+            wine: wine,
+            layout: 'layout_admin'
+          }
+        );          
+    }).fail( function(err) {
+      next(err);
+    });
+    
+  },
+
+  update: function(req, res, next) {
+    var wineObj = {
+        label: req.param('label'),
+        alcohol: req.param('alcohol'),
+        price_en: req.param('price_en'),
+        price_vn: req.param('price_vn'),
+        volume: req.param('volume'),
+        description_en: req.param('description-en'),
+        description_vn: req.param('description-vn'),
+        categories: [req.param('category_id')],
+        brands: [req.param('brand_id')]
+    };
+
+    Wine.update( req.param('id'), wineObj, function(err) {
+      if(err) return res.send( err );
+
+      res.redirect('admin/wine/' + req.param('id'));
+    })
+  },
+
 	uploadImages: function(req, res, next){
 		var timeStamp = (new Date()).getTime(),
 				uploader = new Uploader(),
@@ -93,12 +144,13 @@ module.exports = {
 
 		Wine.findOneByLabel( wineName ).then(function(wine){
       var wineDescription = wine[ 'description_'+res.locals.getLocale() ],
+          price = wine[ 'price_'+res.locals.getLocale() ],
           currCategory = Category.findOne( wine.categories[0] ).then( function(category){
-          return category;
-        });
-      return [ wine, currCategory, wineDescription ];
-		}).spread( function(wine, currCategory, wineDescription) {
-      res.view('home/wine_details',{ wine: wine, currClass: "", currCategory: currCategory, wineDescription: wineDescription });
+            return category;
+          });
+      return [ wine, currCategory, wineDescription, price ];
+		}).spread( function(wine, currCategory, wineDescription, price) {
+      res.view('home/wine_details',{ wine: wine, currClass: "", currCategory: currCategory, wineDescription: wineDescription, price: price });
     }).fail( function(err){
       next(err);
     });	
