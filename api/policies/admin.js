@@ -7,6 +7,7 @@ module.exports = function (req, res, next) {
   if (is_auth) {
     return next();
   }
-  return res.redirect("/");
+
+  return res.forbidden("Only Administrator can view this page");
   
 };

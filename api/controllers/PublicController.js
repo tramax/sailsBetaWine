@@ -7,11 +7,27 @@
 
 module.exports = {
 	listAll: function(req, res, next){
+		var currPage = req.param("page") || 1,
+				limitWine = 12;
 
-    Wine.find().sort('createdAt desc').exec( function(err, wine){
-      if(err) return next(err);
-      res.view('home/list', { wine: wine, currCategory: null, currClass: "current", locale: res.locals.getLocale() });
-    })
+		Wine.count().then( function(totalWine) {
+    	var listWine = Wine.find().paginate({page: currPage, limit: limitWine}).sort('createdAt desc').then( function(wine){
+    		return wine;
+    	})
+    	return [ listWine, totalWine ];
+		}).spread( function(listWine, totalWine) {
+			var totalPage =  Math.ceil(totalWine/limitWine);
+			if( currPage > totalPage ){
+				return res.badRequest('Pagination exceeds','/');
+			}
+      res.view('home/list', { wine: listWine, currCategory: null, currClass: "current", locale: res.locals.getLocale(), currPage: currPage, totalPage: totalPage });
+			
+		}).fail(function(err) {
+			res.serverError(err);
+		})
+
+
+
   },
   listFollowCategory: function(req, res, next){
 
