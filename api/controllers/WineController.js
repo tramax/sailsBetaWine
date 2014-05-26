@@ -59,6 +59,7 @@ module.exports = {
       price_en: req.param('price_en'),
       price_vn: req.param('price_vn'),
       volume: req.param('volume'),
+      origin: req.param('origin'),
       description_en: req.param('description-en'),
       description_vn: req.param('description-vn'),
       categories: [req.param('category_id')],
@@ -113,6 +114,7 @@ module.exports = {
         price_en: req.param('price_en'),
         price_vn: req.param('price_vn'),
         volume: req.param('volume'),
+        origin: req.param('origin'),
         description_en: req.param('description-en'),
         description_vn: req.param('description-vn'),
         categories: [req.param('category_id')],
@@ -137,35 +139,6 @@ module.exports = {
 			imgArr.push(imgName);
 			res.send(200);
 		});
-	},
-
-	details: function(req, res, next){
-    var wineName = req.param('wineName');
-
-		Wine.findOneByLabel( wineName ).then(function(wine){
-      var wineDescription = wine[ 'description_'+res.locals.getLocale() ],
-          price = wine[ 'price_'+res.locals.getLocale() ],
-          currCategory = Category.findOne( wine.categories[0] ).then( function(category){
-            return category;
-          });
-      return [ wine, currCategory, wineDescription, price ];
-		}).spread( function(wine, currCategory, wineDescription, price) {
-      res.view('home/wine_details',{ wine: wine, currClass: "", currCategory: currCategory, wineDescription: wineDescription, price: price });
-    }).fail( function(err){
-      next(err);
-    });	
-	},
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to WineController)
-   */
-  _config: {
-  	blueprints: {
-  		actions: false,
-  		rest: false,
-  		shortcuts: false
-  	}
-  }
-
+	}
   
 };

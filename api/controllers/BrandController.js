@@ -23,14 +23,6 @@ module.exports = {
     		return res.redirect('admin/brand/new');
     	});
     });
-	},
-
-	_config: {
-  	blueprints: {
-  		actions: false,
-  		rest: false,
-  		shortcuts: false
-  	}
-  }
+	}
 };
 

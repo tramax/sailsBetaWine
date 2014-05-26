@@ -43,10 +43,10 @@ module.exports.routes = {
   'GET /login': 'session.login',
   'GET /logout': 'session.logout',
 
-  'GET /category': 'category.listAll',
-  'GET /category/:categoryName' : 'category.listFollowCategory',
+  'GET /category': 'public.listAll',
+  'GET /category/:categoryName' : 'public.listFollowCategory',
   
-  'GET /wine/:wineName': 'wine.details',
+  'GET /wine/:wineName': 'public.details',
   'POST /wine/image': 'wine.uploadImages'
 
 

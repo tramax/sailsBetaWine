@@ -21,11 +21,15 @@ module.exports = {
   		type: 'STRING',
   		required: false
   	},
-  	price_usd: {
+    origin: {
+      type: 'STRING',
+      required: false,
+    },
+  	price_en: {
   		type: 'FLOAT',
   		required: false
   	},
-    price_vnd: {
+    price_vn: {
       type: 'FLOAT',
       required: false
     },

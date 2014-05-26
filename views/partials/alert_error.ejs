@@ -1,0 +1,7 @@
+<% if(flash && flash.err) { %>
+  <div class="login-error form-login">
+    <% Object.keys(flash.err).forEach(function(error) { %>
+      <span class="label alert"><%= flash.err[error] %></span>
+    <% }) %>
+  </div>
+<% } %>

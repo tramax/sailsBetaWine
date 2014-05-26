@@ -24,13 +24,5 @@ module.exports = {
       if (err) { return next(err)};
       res.view('admin/wine_list', { layout: 'layout_admin', wine: wine});
     });
-  },
-
-  _config: {
-  	blueprints: {
-  		actions: false,
-  		rest: false,
-  		shortcuts: false
-  	}
   }
 };

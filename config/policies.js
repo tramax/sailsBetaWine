@@ -23,17 +23,19 @@ module.exports.policies = {
   	'*': [ passport.initialize(), passport.session(), 'admin']
   },
   category: {
-  	'*': [ 'category', 'language' ]
+  	'*': [ passport.initialize(), passport.session(), 'admin', 'flash' ]
   },
   brand: {
   	'*': [ passport.initialize(), passport.session(), 'admin' ]
   },
   wine: {
   	'*': [ passport.initialize(), passport.session(), 'admin' ],
-  	'details': [ 'category', 'language' ]
   },
   session: {
   	'*': [ passport.initialize(), passport.session(), 'language', 'flash' ]
+  },
+  public: {
+  	'*': [ 'category', 'language' ]
   }
 
   /*

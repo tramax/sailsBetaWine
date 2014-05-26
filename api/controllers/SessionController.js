@@ -44,14 +44,5 @@ module.exports = {
   logout: function (req, res){
   	req.logout();
   	res.redirect('/');
-  },
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to SessionController)
-   */
-  _config: {}
-
-  
+  }
 };
