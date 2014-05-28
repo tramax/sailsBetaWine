@@ -1,28 +1,61 @@
-<div class="large-9 columns" role="content">
-  <h4>Create a new Brand</h4>
-  <form action="/brand" method="POST" >
-    <div class="row">
-      <div class="large-12">
-        <div class="row">
-          <div class="large-1 columns">
-            <label for="right-label-inline" class="right inline">Name:</label>
-          </div>
-          <div class="large-11 columns">
-            <input type="text" id="right-label" name="name" placeholder="Name">
-          </div>
+
+<h4>Create a new Brand</h4>
+<form action="/brand" method="POST" >
+   <div class="row">
+    <div class="large-12">
+      <div class="row">
+        <div class="large-2 columns"></div>
+        <div class="large-10 columns">
+          <%- partial('../partials/alert_error') %>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="large-12">
-        <div class="row">
-          <div class="large-1 columns"></div>
-          <div class="large-11 columns">
-            <input type="submit" class="button" value="Submit"/>
-          </div>
+  </div>
+  <div class="row">
+    <div class="large-12">
+      <div class="row">
+        <div class="large-2 columns">
+          <label for="right-label-inline" class="right inline">Name:</label>
+        </div>
+        <div class="large-10 columns">
+          <input type="text" id="right-label" name="name" placeholder="Name">
         </div>
       </div>
     </div>
-    <input id="csrf" type="hidden" name="_csrf" value="<%= _csrf %>" />
-  </form>
-</div>
+  </div>
+  <div class="row">
+    <div class="large-12">
+      <div class="row">
+        <div class="large-2 columns">
+          <label for="right-label-inline" class="right inline">Categories:</label>
+        </div>
+        <div class="large-10 columns">
+          <ul id="select-list" class="button-group form-list">
+            <% for(var i = 0; i<category.length; i++) { %>
+              <li data-id="<%= category[i].id %>">
+                <a href="#" class="small button secondary">
+                  <%= category[i].name %>
+                </a>
+              </li>
+            <% } %>
+          </ul>
+          <label> Selected: </label>
+          <ul id="choose-list" class="button-group form-list"></ul>
+          <div id="choose-input" class="hide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12">
+      <div class="row">
+        <div class="large-1 columns"></div>
+        <div class="large-11 columns">
+          <input type="submit" class="button btn-submit" value="Submit"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input id="csrf" type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>

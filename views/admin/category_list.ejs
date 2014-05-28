@@ -1,0 +1,19 @@
+<table class="center">
+  <thead>
+    <tr>
+      <th width="300">Name</th>
+      <th width="180"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for( var i = 0; i<category.length; i++){ %>
+      <tr>
+        <td><%= category[i].name %></td>
+        <td class="wrapper-btn-action">
+          <a href="/admin/category/<%= category[i].id %>" class="tiny button success left">Edit</a>
+          <a href="#" class="tiny button alert right">Delete</a>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>

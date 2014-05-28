@@ -21,8 +21,14 @@ module.exports = {
 	},
   wineList: function(req, res, next) {
     Wine.find( function(err, wine) {
-      if (err) { return next(err)};
+      if (err) return res.serverError();
       res.view('admin/wine_list', { layout: 'layout_admin', wine: wine});
     });
-  }
-};
+  },
+  categoryList: function(req, res, next) {
+  	Category.find( function(err, category) {
+  		if(err) return res.serverError();
+      res.view('admin/category_list', { layout: 'layout_admin', category: category });
+  	});
+	}
+}

@@ -6,8 +6,9 @@
  */
 
 module.exports = {
+
 	listAll: function(req, res, next){
-		var currPage = req.param("page") || 1,
+		var currPage = parseInt(req.param("page")) || 1,
 				limitWine = 12;
 
 		Wine.count().then( function(totalWine) {
@@ -25,12 +26,9 @@ module.exports = {
 		}).fail(function(err) {
 			res.serverError(err);
 		})
-
-
-
   },
-  listFollowCategory: function(req, res, next){
 
+  listFollowCategory: function(req, res, next){
     Category.findOneByName(req.param("categoryName")).then( function(category){
       var listWine = Wine.find().where({categories: { contains: category.id }}).then( function(wine){
         return wine;
@@ -43,6 +41,7 @@ module.exports = {
       next(err);
     });
   },
+
   details: function(req, res, next){
     var wineName = req.param('wineName');
 
@@ -59,5 +58,6 @@ module.exports = {
       next(err);
     });	
 	}
+
 };
 

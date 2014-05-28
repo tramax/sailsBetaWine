@@ -34,9 +34,14 @@ module.exports.routes = {
     res.redirect('/admin/wine');
   },
   'GET /admin/wine': 'admin.wineList',
+  'GET /admin/category': 'admin.categoryList',
+
   'GET /admin/wine/new': 'wine.new',
-  'GET /admin/wine/:id' : 'wine.edit',
   'GET /admin/category/new': 'category.new',
+
+  'GET /admin/category/:id' : 'category.edit',
+  'GET /admin/wine/:id' : 'wine.edit',
+
 
   'GET /admin/brand/new': 'brand.new',
 
@@ -47,6 +52,7 @@ module.exports.routes = {
   'GET /category/:categoryName' : 'public.listFollowCategory',
   
   'GET /wine/:wineName': 'public.details',
+  
   'POST /wine/image': 'wine.uploadImages'
 
 

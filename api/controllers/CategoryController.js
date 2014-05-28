@@ -15,16 +15,52 @@ module.exports = {
     }
 
     Category.create(categoryObj, function(err, category){
-    	req.session.flash = {
-        err: err
+      if (err) {
+        req.session.flash = {
+          err: err
+        }
+        return res.redirect('admin/category/new');
       }
-      if (err) return res.redirect('admin/category/new');
-
     	category.save(function(err,category){
-    		if(err) return next(err);
-    		return res.redirect('admin/category/new');
+    		if(err){
+          req.session.flash = {
+            err: err
+          }
+          return res.redirect('admin/category/new');
+        } 
+    		
+        return res.redirect('admin/category/new');
     	});
     });
-	}
+	},
+  edit: function(req, res, next) {
+    Category.findOne( req.param("id") ).then( function(category) {
+      var brandList = Brand.find().where({ category: {contains: category.id} }).then( function(brand) {
+        return brand;
+      });
+      return [ category, brandList ];
+    }).spread( function(category, brand ){
+      res.view('admin/category_edit', { layout: 'layout_admin', category: category, brand: brand });
+    }).fail(function(err) {
+      res.serverError();
+    });
+  },
+  update: function(req, res, next) {
+    var categoryObj = {
+      name: req.param('name')
+    }
+    Category.update( req.param('id'), categoryObj, function(err) {
+      if(err) {
+        req.session.flash = {
+          err: err
+        }
+      } else {
+        req.session.flash = {
+          success: "Update Successfully"
+        }
+      }
+      res.redirect('admin/category/' + req.param('id'));
+    })
+  }
 };
 

@@ -7,22 +7,37 @@
 
 module.exports = {
 	new: function(req, res, next){
-		res.view('admin/brand_new', { layout: 'layout_admin' });
+    Category.find( function( err, category) {
+      if(err) return res.serverError();
+      res.view('admin/brand_new', { layout: 'layout_admin', category: category });
+    })
 	},
 	create: function(req, res, next){
 		var brandObj = {
-      name: req.param('name')
-    }
+      name: req.param('name'),
+      categories: req.param('categories')
+    };
 
     Brand.create(brandObj, function(err, brand){
     	if (err) {
+            req.session.flash = {
+                err: err
+            }
     		return res.redirect('admin/brand/new');
     	}
     	brand.save(function(err,brand){
-    		if(err) return next(err);
+    		if(err) {
+                req.session.flash = {
+                    err: err
+                }
+            } else {
+                req.session.flash = {
+                  success: "Create Successfully"
+                }
+            }
     		return res.redirect('admin/brand/new');
     	});
     });
-	}
+  }
 };
 

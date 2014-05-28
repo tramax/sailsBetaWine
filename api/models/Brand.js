@@ -11,6 +11,10 @@ module.exports = {
 		name: {
   		type: 'STRING',
   		required: true
+  	},
+  	categories: {
+  		type: 'ARRAY',
+  		required: true  		
   	}
   }
 };

@@ -1,7 +1,21 @@
-<% if(flash && flash.err) { %>
-  <div class="login-error form-login">
-    <% Object.keys(flash.err).forEach(function(error) { %>
-      <span class="label alert"><%= flash.err[error] %></span>
-    <% }) %>
-  </div>
+<% if(flash && flash.err ) { %>
+  <% Object.keys(flash.err).forEach(function(error) { %>
+  	<div data-alert class="alert-box alert">
+			<%= flash.err[error] %>
+			<a href="#" class="close">&times;</a>
+		</div>
+  <% }) %>
 <% } %>
+
+<% if(flash && flash.success ) { %>
+  <% if( flash.success ) { %>
+    <div data-alert class="alert-box success">
+      <%= flash.success %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% } %>
+<% } %>
+
+
+
+

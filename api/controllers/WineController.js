@@ -122,7 +122,7 @@ module.exports = {
     };
 
     Wine.update( req.param('id'), wineObj, function(err) {
-      if(err) return res.send( err );
+      if(err) return res.serverError();
 
       res.redirect('admin/wine/' + req.param('id'));
     })

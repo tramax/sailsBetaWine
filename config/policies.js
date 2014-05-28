@@ -19,18 +19,35 @@ module.exports.policies = {
   user: {
   	'*': [ passport.initialize(), passport.session(), 'admin']
   },
+  
+  // admin: {
+  // 	'*': [ passport.initialize(), passport.session(), 'admin']
+  // },
+  // category: {
+  // 	'*': [ passport.initialize(), passport.session(), 'admin', 'flash' ]
+  // },
+  // brand: {
+  // 	'*': [ passport.initialize(), passport.session(), 'admin', 'flash' ]
+  // },
+  // wine: {
+  // 	'*': [ passport.initialize(), passport.session(), 'admin' ],
+  // },
+
+// For testing only
   admin: {
-  	'*': [ passport.initialize(), passport.session(), 'admin']
+  	'*': [ passport.initialize(), passport.session()]
   },
   category: {
-  	'*': [ passport.initialize(), passport.session(), 'admin', 'flash' ]
+  	'*': [ passport.initialize(), passport.session(), 'flash' ]
   },
   brand: {
-  	'*': [ passport.initialize(), passport.session(), 'admin' ]
+  	'*': [ passport.initialize(), passport.session(), 'flash' ]
   },
   wine: {
-  	'*': [ passport.initialize(), passport.session(), 'admin' ],
+  	'*': [ passport.initialize(), passport.session() ],
   },
+// End testing
+
   session: {
   	'*': [ passport.initialize(), passport.session(), 'language', 'flash' ]
   },

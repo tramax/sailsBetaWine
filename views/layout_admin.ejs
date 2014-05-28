@@ -39,23 +39,34 @@
  	
   <!-- Main Page Content and Sidebar -->
 
-    <!-- Sidebar -->
- 
-    <aside class="large-3 columns">
-      <ul class="side-nav">
-        <li><a href="/admin/wine">Wine List</a></li>
-        <li><a href="/admin/wine/new">Add Wine</a></li>
-        <li><a href="/admin/category/new">Add Category</a></li>
-        <li><a href="/admin/brand/new">Add Brand</a></li>
-      </ul>
- 
-    </aside>
-    <!-- End Sidebar -->
 
     <!-- Main content -->
-    <div class="row">
-      <%- body %>
-    </div>
+    <section role="main" class="scroll-container">
+      <div class="row">
+        <!-- Sidebar -->
+          <div class="large-2 medium-3 columns">
+              <div class="sidebar">
+                <nav>
+                  <ul class="side-nav">
+                    <li class="heading">Lists</li>
+                    <li><a href="/admin/wine">Wine List</a></li>
+                    <li><a href="/admin/category">Category List</a></li>
+                    <li><a href="/admin/brand">Brand List</a></li>
+                    <hr>
+                    <li class="heading">Create</li>
+                    <li><a href="/admin/wine/new">Add Wine</a></li>
+                    <li><a href="/admin/category/new">Add Category</a></li>
+                    <li><a href="/admin/brand/new">Add Brand</a></li>
+                  </ul>
+                </nav>
+              </div>
+          </div>
+        <!-- End Sidebar -->
+        <div class="large-10 medium-9 columns admin-right-content">
+          <%- body %>
+        </div>
+      </div>
+    </section>
     <!-- End main content -->
     
   <!-- End Main Content and Sidebar -->

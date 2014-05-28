@@ -20,16 +20,20 @@ module.exports = {
 	 
   create: function( req, res, next ){	
   	passport.authenticate('local', function (err, user, info){
-      req.session.flash = {
-        err: info
-      }
-      if (err) res.redirect('/login');
-      if (!user) { 
-        return res.redirect('/login'); 
+
+      if (err || !user){ 
+        req.session.flash = {
+          err: info
+        }
+        return res.redirect('/login');
       }
       req.logIn(user, function(err) {
-        if (err) res.redirect('/login');
-
+        if (err) {
+          req.session.flash = {
+            err: err
+          }
+          return res.redirect('/login');
+        }
         if(user.role === 'administrator'){
           return res.redirect('/admin');
         } 
@@ -37,12 +41,13 @@ module.exports = {
       });
     })(req, res, next)
   },
+  
   login: function(req, res, next){
     res.view("home/login", {layout: false});
   },
 
   logout: function (req, res){
   	req.logout();
-  	res.redirect('/');
+  	res.redirect('/login');
   }
 };
